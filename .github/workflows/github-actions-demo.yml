@@ -9,3 +9,17 @@ on:
   schedule:
     - cron: '15 6 * * 0'
   workflow_dispatch:
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "Event Name: ${{ github.event_name }}"
+          echo "Branch name: ${{ github.ref }} and repository Name: ."
+
+      - uses: actions/checkout@v3.3.0
+
+      - name: List files in the repository
+        run: |
+          echo "All the files in ${{ github.repository }} are listed below:"
+          tree
